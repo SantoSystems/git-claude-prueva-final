@@ -31,3 +31,7 @@ a:hover {
 nav {
     display: flex;
 }
+
+form {
+    margin-top: 20px;
+}
