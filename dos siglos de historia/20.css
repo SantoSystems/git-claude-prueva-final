@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;600&display=swap');
+
+:root {
+  --bg: #0e0e0e;
+  --surface: #161616;
+  --border: #222;
+  --red: #cc2200;
+  --red-dim: #661100;
+  --white: #f0ece2;
+  --muted: #555;
+  --yellow: #d4a800;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'IBM Plex Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.page-nav {
+  position: fixed;
+  top: 0; width: 100%;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 2px solid var(--red);
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-back {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: letter-spacing 0.2s;
+}
+
+.nav-back:hover { letter-spacing: 0.4em; }
+
+.nav-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+/* HERO */
+.era-hero {
+  padding: 10rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid var(--border);
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(12rem, 35vw, 32rem);
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(204,34,0,0.06);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.era-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.5em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.era-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 12vw, 11rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+.era-title .accent { color: var(--red); }
+
+.era-meta {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.era-dates {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+.era-divider {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 200px;
+}
+
+/* BODY */
+.tl-body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5rem 3rem 8rem;
+}
+
+/* Decade */
+.decade-group { margin-bottom: 5rem; }
+
+.decade-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.decade-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--red);
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.decade-rule { height: 2px; background: var(--border); }
+
+.decade-count {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* Cards grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2px;
+  background: var(--border);
+}
+
+.event-card {
+  background: var(--surface);
+  padding: 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+
+.event-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+.event-card[data-cat="guerra"]::after { background: var(--red); }
+.event-card[data-cat="ciencia"]::after { background: #2277cc; }
+.event-card[data-cat="politica"]::after { background: var(--yellow); }
+.event-card[data-cat="sociedad"]::after { background: #228855; }
+.event-card[data-cat="tecnologia"]::after { background: #7755cc; }
+.event-card[data-cat="desastre"]::after { background: #cc7700; }
+
+.event-card:hover { background: #1a1a1a; }
+
+.card-year {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--muted);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+  transition: color 0.2s;
+}
+
+.event-card:hover .card-year { color: var(--white); }
+
+.card-cat {
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+[data-cat="guerra"] .card-cat { color: var(--red); }
+[data-cat="ciencia"] .card-cat { color: #2277cc; }
+[data-cat="politica"] .card-cat { color: var(--yellow); }
+[data-cat="sociedad"] .card-cat { color: #228855; }
+[data-cat="tecnologia"] .card-cat { color: #7755cc; }
+[data-cat="desastre"] .card-cat { color: #cc7700; }
+
+.card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.card-desc {
+  font-size: 0.64rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* FILTER BAR */
+.filter-bar {
+  position: sticky;
+  top: 58px;
+  z-index: 90;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 3rem;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(204,34,0,0.05);
+}
+
+.filter-btn.active { font-weight: 600; }
+
+/* Hidden */
+.event-card.hidden { display: none; }
+.decade-group.all-hidden { display: none; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.4s, transform 0.4s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .page-nav, .filter-bar, .tl-body { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .events-grid { grid-template-columns: 1fr; }
+}
